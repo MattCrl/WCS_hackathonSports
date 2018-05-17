@@ -51,7 +51,7 @@ class AthleteController extends Controller
             return $this->redirectToRoute('athlete_show', array('id' => $athlete->getId()));
         }
 
-        return $this->render('athlete/new.html.twig', array(
+        return $this->render('athlete/admin_new.html.twig', array(
             'athlete' => $athlete,
             'form' => $form->createView(),
         ));
@@ -91,7 +91,7 @@ class AthleteController extends Controller
             return $this->redirectToRoute('athlete_edit', array('id' => $athlete->getId()));
         }
 
-        return $this->render('athlete/edit.html.twig', array(
+        return $this->render('athlete/admin_edit.html.twig', array(
             'athlete' => $athlete,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

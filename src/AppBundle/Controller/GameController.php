@@ -51,7 +51,7 @@ class GameController extends Controller
             return $this->redirectToRoute('game_show', array('id' => $game->getId()));
         }
 
-        return $this->render('game/new.html.twig', array(
+        return $this->render('game/admin_new.html.twig', array(
             'game' => $game,
             'form' => $form->createView(),
         ));
@@ -93,7 +93,7 @@ class GameController extends Controller
             ]);
         }
 
-        return $this->render('game/edit.html.twig', array(
+        return $this->render('game/admin_edit.html.twig', array(
             'game' => $game,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
