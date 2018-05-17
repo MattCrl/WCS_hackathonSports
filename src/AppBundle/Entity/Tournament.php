@@ -47,7 +47,6 @@ class Tournament
      * @ORM\Column(name="nb_teams", type="integer")
      * @Assert\Choice(choices={"2", "4", "8", "16", "32"}, message="Choose a valid number.")
      */
-
     private $nbTeams;
 
     /**
