@@ -20,20 +20,37 @@
                             and app.request.get('_route_params').game_id == game.id %}
                                 active
                             {% endif %}">
+                                {% if game.team1.countryCode is defined %}
+                                <img src="http://www.countryflags.io/{{ game.team1.countryCode }}/shiny/32.png" alt="">
+                                {% endif %}
                                 {{ game.team1.name|default('???') }}
-                                vs
+                                <span class="font-weight-bold">vs</span>
                                 {{ game.team2.name|default('???') }}
+                                {% if game.team2.countryCode is defined %}
+                                <img src="http://www.countryflags.io/{{ game.team2.countryCode }}/shiny/32.png" alt="">
+                                {% endif %}
 
+                                {% if app.request.get('_route_params').game_id is not defined
+                                    or app.request.get('_route_params').game_id != game.id %}
                                 <span>
                                     <a href="{{ path('admin_tournament_game_edit',  {'id': tournament.id, 'game_id': game.id} ) }}">
                                         Edit
                                     </a>
                                 </span>
+                                {% endif %}
+
                             </li>
                         {% endfor %}
                     </ul>
                 {% endfor %}
             {% endif %}
+
+            {% if tournament.games.last.score1 is defined %}
+                <br>
+                <h2>Winner of this tournament is</h2>
+                <h3>{{ tournament.games.last.getWinner }}</h3>
+            {% endif %}
+
         </div>
         {% if edit_game_form is not null %}
             <div class="col">
