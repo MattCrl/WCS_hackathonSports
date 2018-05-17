@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Team;
 
 /**
  * GameRepository
@@ -10,4 +11,23 @@ namespace AppBundle\Repository;
  */
 class GameRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    /**
+     * Get the last match of a team
+     *
+     * @param Team $team
+     *
+     * @return Team
+     */
+    public function getLastMatch(Team $team)
+    {
+        $qb = $this->createQueryBuilder('g')
+            ->select('g')
+            ->where('g.team1 = :id')
+            ->orWhere('g.team2 = :id')
+            ->andWhere('g.score1 IS NOT NULL')
+            ->setParameter('id',$team->getId())
+            ->getQuery();
+        return $qb->execute();
+    }
 }
