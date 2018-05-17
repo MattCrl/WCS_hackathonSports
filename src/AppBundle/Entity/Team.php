@@ -48,6 +48,13 @@ class Team
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
      * Get id
      *
      * @return int
@@ -113,4 +120,26 @@ class Team
         $this->description = $description;
     }
 
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     * @return Team
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    public function getCountryCode()
+    {
+        return $this->country->getCode();
+    }
 }
