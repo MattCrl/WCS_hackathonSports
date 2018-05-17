@@ -89,6 +89,22 @@ class TournamentController extends Controller
     }
 
     /**
+     * Finds and displays last tournament entity.
+     *
+     * @Route("/last", name="tournament_last_show")
+     * @Method("GET")
+     */
+    public function showLast()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tournament = $em->getRepository(Tournament::class)->findOneByHighestId();
+
+        return $this->render('tournament/show.html.twig', array(
+            'tournament' => $tournament,
+        ));
+    }
+
+    /**
      * Finds and displays a tournament entity.
      *
      * @Route("/{id}", name="tournament_show")
