@@ -63,7 +63,7 @@ class Athlete
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true, options={"default" : "https://proactcommercial.com/wp-content/uploads/2016/06/flow-portrait-placeholder-c7b8ffd06f7d3850ca23f068583755f8.png"})
      */
     private $image;
 

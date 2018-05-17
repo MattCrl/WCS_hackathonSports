@@ -1,44 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Athletes list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Birthdate</th>
-                <th>Biography</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+        <h1>Athletes</h1>
+    </div>
+    <div class="row">
         {% for athlete in athletes %}
-            <tr>
-                <td><a href="{{ path('athlete_show', { 'id': athlete.id }) }}">{{ athlete.id }}</a></td>
-                <td>{{ athlete.firstname }}</td>
-                <td>{{ athlete.lastname }}</td>
-                <td>{% if athlete.birthdate %}{{ athlete.birthdate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ athlete.biography }}</td>
-                <td>{{ athlete.image }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('athlete_show', { 'id': athlete.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('athlete_edit', { 'id': athlete.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <div class="card col-3">
+                <div class="card-body text-center">
+                    <img class="img-fluid" src="{{ athlete.image }}">
+                    <h4 class="card-title">{{ athlete }}</h4>
+                    <a role="button" class="btn btn-info" href="{{ path('athlete_show', { 'id': athlete.id }) }}">See more</a>
+                    <a role="button" class="btn btn-primary" href="{{ path('athlete_edit', { 'id': athlete.id }) }}">Edit</a>
+                </div>
+            </div>
+        {% else %}
+            No athletes yet
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
     <ul>
         <li>
             <a href="{{ path('athlete_new') }}">Create a new athlete</a>
