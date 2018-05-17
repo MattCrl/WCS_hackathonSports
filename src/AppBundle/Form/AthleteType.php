@@ -14,7 +14,8 @@ class AthleteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstname')->add('lastname')->add('birthdate')->add('biography')->add('image')->add('team');
-    }/**
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
