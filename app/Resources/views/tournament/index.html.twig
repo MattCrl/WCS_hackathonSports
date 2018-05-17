@@ -5,29 +5,20 @@
 
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Tournament</th>
-                <th>Number of teams</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Tournament</th>
+            <th>Number of teams</th>
+        </tr>
         </thead>
         <tbody>
         {% for tournament in tournaments %}
             <tr>
                 <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
                 <td>{{ tournament.nbTeams }}</td>
-                <td>
-                    <a role="button" class="btn btn-primary btn-sm" href="{{ path('tournament_show', { 'id': tournament.id }) }}">Show</a>
-                    <a role="button" class="btn btn-warning btn-sm" href="{{ path('tournament_edit', { 'id': tournament.id }) }}">Edit</a>
-                </td>
+
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('tournament_new') }}">Create a new tournament</a>
-        </li>
-    </ul>
 {% endblock %}
