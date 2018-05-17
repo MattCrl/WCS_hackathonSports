@@ -98,4 +98,14 @@ class Country
     {
         return $this->code;
     }
+
+    /**
+     * Get Country
+     *
+     * @return $this
+     */
+    public function getCountry()
+    {
+        return $this;
+    }
 }

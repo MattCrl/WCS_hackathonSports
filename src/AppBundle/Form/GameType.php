@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,30 @@ class GameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('startAt')->add('place')->add('score1')->add('score2')->add('team1')->add('team2')->add('prevGame1')->add('prevGame2')->add('tournament');
-    }/**
+        $game = $options['data'];
+        $maxLevel = $game->getTournament()->getGames()[0]->getLevel();
+
+        $builder
+            ->add('startAt', DateTimeType::class,
+                [
+                    'widget' => 'single_text', 'model_timezone' => 'Europe/Paris', 'html5' => false,
+                    'attr' => ['class' => 'flatpickr']
+                ]
+            )
+            ->add('place');
+        if ($maxLevel === $game->getLevel()) {
+            $builder
+                ->add('team1')
+                ->add('team2');
+        }
+        $builder
+            ->add('score1')
+            ->add('score2');
+
+
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
