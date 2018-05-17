@@ -8,9 +8,9 @@
 
         {% for i in currentLevel..0 %}
             <div class="card">
-                <div class="card-header h1">
+                <div class="card-header">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-11 h3">
                             {{ constant('GAME_LEVELS', tournament)[i] }}
                         </div>
                         <div class="col-1">
@@ -22,7 +22,7 @@
             <ul class="list-group list-group-flush">
                 {% for game in tournament.games if game.level == i %}
                     <li class="list-group-item text-center">
-                        <div class="h1">
+                        <div class="">
                         {% if game.team1 %}
                             <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
                         {% endif %}
@@ -34,7 +34,7 @@
                         {% endif %}
                         </div>
 
-                        <div class="h4">
+                        <div class="">
                             {% if game.startAt %}
                                 {{ game.startAt|date('d F Y H:i') }}
                             {% endif %}{% if game.startAt and game.place %},
