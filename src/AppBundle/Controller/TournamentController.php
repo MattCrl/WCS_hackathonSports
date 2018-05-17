@@ -33,6 +33,23 @@ class TournamentController extends Controller
         ));
     }
 
+    private function generateSubGames(Game $game, Tournament $tournament, $levelMax, $currentLevel = 0)
+    {
+        $game->setTournament($tournament);
+        $game->setLevel($currentLevel);
+        if ($currentLevel < $levelMax) {
+            $currentLevel++;
+            $prev1 = $this->generateSubGames(new Game(), $tournament, $levelMax, $currentLevel);
+            $prev2 = $this->generateSubGames(new Game(), $tournament, $levelMax, $currentLevel);
+
+            $game->setPrevGame1($prev1);
+            $game->setPrevGame2($prev2);
+        }
+
+        return $game;
+
+    }
+
 
     /**
      * Creates a new tournament entity.
@@ -49,9 +66,17 @@ class TournamentController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //Todo: generate all games here ?
             $em = $this->getDoctrine()->getManager();
             $em->persist($tournament);
+            $maxLevel = 0;
+            $nbMatches = $tournament->getNbTeams() / 2;
+            while ($nbMatches > 1) {
+                $maxLevel++;
+                $nbMatches = $nbMatches / 2;
+            }
+
+            $finale = $this->generateSubGames(new Game(), $tournament, $maxLevel);
+            $em->persist($finale);
             $em->flush();
 
             return $this->redirectToRoute('tournament_show', array('id' => $tournament->getId()));

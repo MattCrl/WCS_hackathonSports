@@ -25,12 +25,12 @@ class Game
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Game")
+     * @ORM\ManyToOne(targetEntity="Game", cascade={"persist"})
      */
     private $prevGame1;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Game")
+     * @ORM\ManyToOne(targetEntity="Game", cascade={"persist"})
      */
     private $prevGame2;
 
@@ -38,6 +38,14 @@ class Game
      * @ORM\ManyToOne(targetEntity="Tournament")
      */
     private $tournament;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer")
+     *
+     */
+    private $level;
 
     /**
      * @var int
@@ -301,5 +309,29 @@ class Game
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return Game
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
 }
