@@ -12,32 +12,32 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="{{ path('homepage') }}">
+    <a class="navbar-brand" href="{{ path('homepage') }}">
 
-            <img class="img-fluid" width="100" src="{{ asset('images/logo.png') }}"></a>
+        <img class="img-fluid" width="100" src="{{ asset('images/logo.png') }}"></a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a class="nav-link" href="{{ path('homepage') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('homepage') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ path('team_index') }}">Teams</a>
+                <a class="nav-link" href="{{ path('team_index') }}">Teams</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ path('tournament_last_show')}}">Tournament</a>
+                <a class="nav-link" href="{{ path('tournament_last_show') }}">Tournament</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ path('tournament_index') }}">Tournaments Archives</a>
+                <a class="nav-link" href="{{ path('tournament_index') }}">Tournaments Archives</a>
             </li>
-            </ul>
+        </ul>
 
-        </div>
+    </div>
 
 
 </nav>
@@ -52,15 +52,6 @@
 </div>
 
 
-<footer class="footer bg-secondary">
-    <div class="container">
-        <ul>
-            <li>
-                TODO
-            </li>
-        </ul>
-    </div>
-</footer>
 <script src="{{ asset('build/app.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
