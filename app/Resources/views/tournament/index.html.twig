@@ -3,30 +3,22 @@
 {% block body %}
     <h1>Tournaments list</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Nbteams</th>
+                <th>Tournament</th>
+                <th>Number of teams</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for tournament in tournaments %}
             <tr>
-                <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.id }}</a></td>
-                <td>{{ tournament.name }}</td>
+                <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
                 <td>{{ tournament.nbTeams }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tournament_show', { 'id': tournament.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tournament_edit', { 'id': tournament.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a role="button" class="btn btn-primary btn-sm" href="{{ path('tournament_show', { 'id': tournament.id }) }}">Show</a>
+                    <a role="button" class="btn btn-warning btn-sm" href="{{ path('tournament_edit', { 'id': tournament.id }) }}">Edit</a>
                 </td>
             </tr>
         {% endfor %}
