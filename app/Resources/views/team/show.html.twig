@@ -36,14 +36,20 @@
     <hr>
     <h2>Derniers résultats</h2>
 
-    <p><img src="http://www.countryflags.io/be/shiny/32.png" alt="">Team1 Vs Team2<img
-                src="http://www.countryflags.io/pt/shiny/32.png" alt=""></p>
+    <p>
+        <img src="http://www.countryflags.io/be/shiny/32.png" alt="">
+        Team1 Vs Team2
+        <img src="http://www.countryflags.io/pt/shiny/32.png" alt="">
+    </p>
+    <p>
+        <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
+        <a role="button" class="btn btn-primary" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+    </p>
 
-    <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
-    <a role="button" class="btn btn-primary" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
-
-    {{ form_start(delete_form) }}
-        <input type="submit" value="Delete">
-    {{ form_end(delete_form) }}
+    <p>
+        {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    </p>
 
 {% endblock %}
