@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Athlete controller.
  *
- * @Route("athlete")
+ *
  */
 class AthleteController extends Controller
 {
     /**
      * Lists all athlete entities.
      *
-     * @Route("/", name="athlete_index")
+     * @Route("athlete", name="athlete_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -32,9 +32,26 @@ class AthleteController extends Controller
     }
 
     /**
-     * Creates a new athlete entity.
+     * Lists all athlete entities ADMIN.
      *
-     * @Route("/new", name="athlete_new")
+     * @Route("admin/athlete", name="admin_athlete_index")
+     * @Method("GET")
+     */
+    public function adminIndexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $athletes = $em->getRepository('AppBundle:Athlete')->findAll();
+
+        return $this->render('athlete/admin_index.html.twig', array(
+            'athletes' => $athletes,
+        ));
+    }
+
+    /**
+     * Creates a new athlete entity ADMIN.
+     *
+     * @Route("admin/new", name="admin_athlete_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +65,7 @@ class AthleteController extends Controller
             $em->persist($athlete);
             $em->flush();
 
-            return $this->redirectToRoute('athlete_show', array('id' => $athlete->getId()));
+            return $this->redirectToRoute('admin_athlete_show', array('id' => $athlete->getId()));
         }
 
         return $this->render('athlete/admin_new.html.twig', array(
@@ -60,7 +77,7 @@ class AthleteController extends Controller
     /**
      * Finds and displays a athlete entity.
      *
-     * @Route("/{id}", name="athlete_show")
+     * @Route("athlete/{id}", name="athlete_show")
      * @Method("GET")
      */
     public function showAction(Athlete $athlete)
@@ -74,9 +91,25 @@ class AthleteController extends Controller
     }
 
     /**
+     * Finds and displays a athlete entity.
+     *
+     * @Route("admin/athlete/{id}", name="admin_athlete_show")
+     * @Method("GET")
+     */
+    public function adminShowAction(Athlete $athlete)
+    {
+        $deleteForm = $this->createDeleteForm($athlete);
+
+        return $this->render('athlete/admin_show.html.twig', array(
+            'athlete' => $athlete,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing athlete entity.
      *
-     * @Route("/{id}/edit", name="athlete_edit")
+     * @Route("admin/athlete/{id}/edit", name="admin_athlete_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Athlete $athlete)
@@ -88,7 +121,7 @@ class AthleteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('athlete_edit', array('id' => $athlete->getId()));
+            return $this->redirectToRoute('admin_athlete_edit', array('id' => $athlete->getId()));
         }
 
         return $this->render('athlete/admin_edit.html.twig', array(
@@ -115,7 +148,7 @@ class AthleteController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('athlete_index');
+        return $this->redirectToRoute('admin_athlete_index');
     }
 
     /**

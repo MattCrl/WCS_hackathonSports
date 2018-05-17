@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block body %}
     <h1>Athlete creation</h1>
@@ -8,9 +8,8 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('athlete_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <p>
+        <a class="btn btn-primary" href="{{ path('admin_athlete_index') }}">Back to the athlete list</a>
+    </p>
+
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block body %}
 
@@ -25,7 +25,17 @@
         </div>
     </div>
 
+
     <p>
-        <a role="button" class="btn btn-primary" href="{{ path('athlete_index') }}">Back to Athletes list</a>
+        <a class="btn btn-primary" href="{{ path('admin_athlete_index') }}">Back to the athlete list</a>
     </p>
+
+    <p>
+        <a class="btn btn-primary" href="{{ path('admin_athlete_edit', { 'id': athlete.id }) }}">Edit</a>
+    </p>
+
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
 {% endblock %}
