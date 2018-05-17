@@ -26,6 +26,14 @@ body {
   }
 }
 
+.media {
+  margin-bottom: 20px;
+  img {
+    margin: 1rem;
+    box-shadow: 1px 1px 4px black;
+  }
+}
+
 h1 {
   font-family: 'Squada One', cursive;
 }

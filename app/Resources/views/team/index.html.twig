@@ -4,17 +4,17 @@
     <div class="row">
         <h1>Teams</h1>
     </div>
+
     <div class="row">
         {% for team in teams %}
-           <div class="card col-3">
-               <div class="card-body text-center">
-                   <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png">
-                   <h4 class="card-title">{{ team.name }}</h4>
-                   <p class="card-text">{{ team.description }}</p>
-                   <a role="button" class="btn btn-info" href="{{ path('team_show', { 'id': team.id }) }}">See more</a>
-                   <a role="button" class="btn btn-primary" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
-               </div>
-           </div>
+        <div class="media col-4">
+            <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="Country flag">
+            <div class="media-body">
+                <h3 class="mt-0">{{ team.name }}</h3>
+                <a role="button" class="btn btn-info" href="{{ path('team_show', { 'id': team.id }) }}">See more</a>
+                <a role="button" class="btn btn-primary" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+            </div>
+        </div>
         {% endfor %}
     </div>
 
