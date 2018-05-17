@@ -1,18 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block fluid %}
-    <section class="header">
-        <div id="wrapper">
-            <div id="container">
-                <div id="welcome">
-                    <h1><span>Aqua Poney World CUP</span></h1>
-                </div>
-                <div class="row">
-                    <a href="{{ path('tournament_index') }}" class="btn btn-primary offset-4 col-4" role="button">Go to the tournaments</a>
-                </div>
-            </div>
+    <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Aqua Pony World Cup</h1>
+            <p class="lead">The world's leading competition for water and ponies lovers. </p>
         </div>
-    </section>
+    </div>
 
 {% endblock %}
 

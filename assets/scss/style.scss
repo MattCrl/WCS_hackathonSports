@@ -1,29 +1,12 @@
+$font-family-sans-serif: 'PT Sans Narrow', sans-serif;
 
-
-$theme-colors: (
-        "primary": #11007c,
-);
 @import '~bootstrap/scss/bootstrap';
-
-body {
-  font-family: 'PT Sans Narrow', sans-serif;
-}
-
-.row {
-  margin: 0;
-}
 
 .navbar {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
   box-shadow: 0 8px 6px -6px #999;
-  height: 60px;
-  background-color: #00c4ff;
-  .navbar-brand {
-    img {
-      height: 50px;
-    }
-  }
+
   ul {
     li {
       a {
@@ -39,10 +22,14 @@ body {
   }
 }
 
-.media {
-  margin-bottom: 20px;
-  img {
-    margin: 1rem;
+.jumbotron {
+  background: url("https://derpicdn.net/img/2014/6/16/654494/full.png") center center no-repeat;
+  background-size: cover;
+  height: 80vh;
+  margin: 0;
+  color: $secondary;
+  h1 {
+    color: $secondary;
 
   }
 }
@@ -52,15 +39,9 @@ h1 {
   text-align: center;
   padding-top: 20px;
   font-size: 70px;
-  color: #11007c;
+  color: $primary;
 }
 
-.header {
-  height: 900px;
-  background-image: url("https://derpicdn.net/img/2014/6/16/654494/full.png");
-
-}
-
-.container-fluid {
-  padding: 0;
+.team-img {
+  max-width: 10vw;
 }

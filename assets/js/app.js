@@ -1,2 +1,2 @@
-import bootstrap from 'bootstrap'
+import 'bootstrap'
 import $ from 'jquery'

@@ -8,31 +8,39 @@
 
         {% for i in currentLevel..0 %}
             <div class="card">
-                <div class="card-header">
-                    {{ constant('GAME_LEVELS', tournament)[i] }}
+                <div class="card-header h1">
+                    <div class="row">
+                        <div class="col-11">
+                            {{ constant('GAME_LEVELS', tournament)[i] }}
+                        </div>
+                        <div class="col-1">
+                            <img class="img-fluid" src="{{ asset('images/logo-dark.png') }}">
+                        </div>
+                    </div>
                 </div>
             </div>
             <ul class="list-group list-group-flush">
                 {% for game in tournament.games if game.level == i %}
-                    <li class="list-group-item">
-                        <div>
+                    <li class="list-group-item text-center">
+                        <div class="h1">
                         {% if game.team1 %}
-                            <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/32.png" alt="">
+                            <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
                         {% endif %}
-                        {{ game.team1.name|default('...') }}
+                        {{ game.team1.name|default('???') }}
                         vs
-                        {{ game.team2.name|default('...') }}
+                        {{ game.team2.name|default('???') }}
                         {% if game.team2 %}
-                            <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/32.png" alt="">
+                            <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
                         {% endif %}
                         </div>
 
-                        <div>
-                            {{ game.startAt|date('d F Y H:i') }}{% if game.startAt and game.place %},
+                        <div class="h4">
+                            {% if game.startAt %}
+                                {{ game.startAt|date('d F Y H:i') }}
+                            {% endif %}{% if game.startAt and game.place %},
                             {% endif %}
                             {{ game.place }}
                         </div>
-
                     </li>
                 {% endfor %}
             </ul>
