@@ -35,7 +35,7 @@ class Game
     private $prevGame2;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\ManyToOne(targetEntity="Tournament", inversedBy="games")
      */
     private $tournament;
 

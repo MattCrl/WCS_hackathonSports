@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Tournament
  *
@@ -12,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tournament
 {
+    const GAME_LEVELS = [
+        0 => 'Finale',
+        1 => 'Demi-finales',
+        2 => 'Quarts-de-finale',
+        3 => 'Huitièmes-de-finale',
+        4 => 'Seixièmes-de-finale'
+    ];
+
+
     /**
      * @var int
      *
@@ -32,9 +41,16 @@ class Tournament
      * @var int
      *
      * @ORM\Column(name="nb_teams", type="integer")
+     * @Assert\Choice(choices={"2", "4", "8", "16", "32"}, message="Choose a valid number.")
      */
+
     private $nbTeams;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="tournament")
+     * @ORM\OrderBy({"level":"DESC"})
+     */
+    private $games;
 
     /**
      * Get id
@@ -92,5 +108,47 @@ class Tournament
     public function getNbTeams()
     {
         return $this->nbTeams;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Tournament
+     */
+    public function addGame(\AppBundle\Entity\Game $game)
+    {
+        $this->games[] = $game;
+
+        return $this;
+    }
+
+    /**
+     * Remove game
+     *
+     * @param \AppBundle\Entity\Game $game
+     */
+    public function removeGame(\AppBundle\Entity\Game $game)
+    {
+        $this->games->removeElement($game);
+    }
+
+    /**
+     * Get games
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGames()
+    {
+        return $this->games;
     }
 }
