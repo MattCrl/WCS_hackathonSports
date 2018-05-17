@@ -5,18 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Team
+ * Tournament
  *
- * @ORM\Table(name="team")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TeamRepository")
+ * @ORM\Table(name="tournament")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TournamentRepository")
  */
-class Team
+class Tournament
 {
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
     /**
      * @var int
      *
@@ -29,9 +24,16 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_teams", type="integer")
+     */
+    private $nbTeams;
 
 
     /**
@@ -49,7 +51,7 @@ class Team
      *
      * @param string $name
      *
-     * @return Team
+     * @return Tournament
      */
     public function setName($name)
     {
@@ -66,6 +68,30 @@ class Team
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set nbTeams
+     *
+     * @param integer $nbTeams
+     *
+     * @return Tournament
+     */
+    public function setNbTeams($nbTeams)
+    {
+        $this->nbTeams = $nbTeams;
+
+        return $this;
+    }
+
+    /**
+     * Get nbTeams
+     *
+     * @return int
+     */
+    public function getNbTeams()
+    {
+        return $this->nbTeams;
     }
 }
 
