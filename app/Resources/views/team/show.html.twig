@@ -3,30 +3,37 @@
 {% block body %}
     <h1>Team</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ team.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ team.name }}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <div class="row">
+        <img src="http://www.countryflags.io/be/shiny/64.png" alt="">
+        <h2>Belgique - Nom de l'équipe</h2>
+    </div>
+    <hr>
+    <div class="row">
+        <p>Description de l'équipe</p>
+    </div>
+<div class="row">
     <ul>
-        <li>
-            <a href="{{ path('team_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        <li>Nom joueur 1</li>
+        <li>Nom joueur 2</li>
+        <li>Nom joueur 3</li>
     </ul>
+    <div class="col-9">
+        <div class="float-right">
+            <img src="http://www.countryflags.io/be/shiny/64.png" alt="">
+        </div>
+    </div>
+</div>
+
+    <hr>
+    <h2>Derniers résultats</h2>
+
+    <p><img src="http://www.countryflags.io/be/shiny/32.png" alt="">Team1 Vs Team2<img src="http://www.countryflags.io/pt/shiny/32.png" alt=""></p>
+
+    <a href="{{ path('team_index') }}">Back to the list</a>
+    <a href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
 {% endblock %}
