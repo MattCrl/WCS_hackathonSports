@@ -3,25 +3,26 @@
 {% block body %}
     <h1>Tournament</h1>
 
-    {% set currentLevel = tournament.games[0].level %}
+    {% if tournament.games[0] is defined %}
+        {% set currentLevel = tournament.games[0].level %}
 
-    {% for i in currentLevel..0 %}
-        <div class="card">
-            <div class="card-header">
-                {{ constant('GAME_LEVELS', tournament)[i] }}
+        {% for i in currentLevel..0 %}
+            <div class="card">
+                <div class="card-header">
+                    {{ constant('GAME_LEVELS', tournament)[i] }}
+                </div>
             </div>
-        </div>
-        <ul class="list-group list-group-flush">
-            {% for game in tournament.games if game.level == i %}
-                <li class="list-group-item">
-                    {{ game.team1.name|default('...') }}
-                    vs
-                    {{ game.team2.name|default('...') }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
-
+            <ul class="list-group list-group-flush">
+                {% for game in tournament.games if game.level == i %}
+                    <li class="list-group-item">
+                        {{ game.team1.name|default('...') }}
+                        vs
+                        {{ game.team2.name|default('...') }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
 
 
 {% endblock %}
