@@ -8,7 +8,7 @@
         {% for athlete in athletes %}
             <div class="card col-3">
                 <div class="card-body text-center">
-                    <img class="img-fluid" src="{{ athlete.image }}">
+                    <img class="img-fluid" src="{{ asset('images/')}}{{ athlete.image }}">
                     <h4 class="card-title">{{ athlete }}</h4>
                     <a role="button" class="btn btn-info" href="{{ path('athlete_show', { 'id': athlete.id }) }}">See more</a>
                     <a role="button" class="btn btn-primary" href="{{ path('athlete_edit', { 'id': athlete.id }) }}">Edit</a>
