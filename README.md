@@ -8,7 +8,7 @@ hackathonSports
 * Brice Jaugin - [Github Profile](https://github.com/WolfYerik)
 * Matthieu Carlevaris - [Github Profile](https://github.com/MattCrl)
 
-#Description
+Description
 ===============
 *La Fédération Internationale du <sport collectif> vous contacte pour créer le site qui va permettre à des centaines de millions de personnes de suivre cet événement exceptionnel sur internet*
 
