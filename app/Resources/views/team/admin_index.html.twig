@@ -11,7 +11,7 @@
                 <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="Country flag">
                 <div class="media-body">
                     <h3 class="mt-0">{{ team.name }}</h3>
-                    <a role="button" class="btn btn-info" href="{{ path('team_show', { 'id': team.id }) }}">See more</a>
+                    <a role="button" class="btn btn-info" href="{{ path('admin_team_show', { 'id': team.id }) }}">See more</a>
                     <a role="button" class="btn btn-primary" href="{{ path('admin_team_edit', { 'id': team.id }) }}">Edit</a>
                 </div>
             </div>
