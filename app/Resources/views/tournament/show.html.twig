@@ -47,5 +47,10 @@
         {% endfor %}
     {% endif %}
 
+    {% if tournament.games.last.score1 is defined %}
+        <br>
+        <h2>Winner of this tournament is</h2>
+        <h3>{{ tournament.games.last.getWinner }}</h3>
+    {% endif %}
 
 {% endblock %}

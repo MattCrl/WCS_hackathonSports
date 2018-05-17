@@ -67,7 +67,7 @@ class TeamController extends Controller
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_show', array('id' => $team->getId()));
+            return $this->redirectToRoute('admin_team_show', array('id' => $team->getId()));
         }
 
         return $this->render('team/admin_new.html.twig', array(
@@ -165,7 +165,7 @@ class TeamController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('team_index');
+        return $this->redirectToRoute('admin_team_index');
     }
 
     /**

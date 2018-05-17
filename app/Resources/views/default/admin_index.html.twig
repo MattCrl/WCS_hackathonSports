@@ -1,0 +1,20 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block fluid %}
+    <section class="header">
+        <div id="wrapper">
+            <div id="container">
+                <div id="welcome">
+                    <h1><span>Aqua Poney World CUP ADMIN</span></h1>
+                </div>
+                <div class="row">
+                    <a href="{{ path('tournament_index') }}" class="btn btn-primary offset-4 col-4" role="button">Go to the tournaments</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
