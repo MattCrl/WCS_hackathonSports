@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  font-family: 'Squada One', cursive;
+  font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .navbar {
@@ -9,7 +9,7 @@ body {
   -moz-box-shadow: 0 8px 6px -6px #999;
   box-shadow: 0 8px 6px -6px #999;
   height: 60px;
-  background-color: #f2f2f2;
+  background-color: #002F57;
   .navbar-brand {
     img {
       height: 50px;
@@ -18,9 +18,13 @@ body {
   ul {
     li {
       a {
-        color: #4e4659;
-        font-family: 'Squada One', cursive;
-        font-size: 20px;
+        color: #C2DFDD;
+        font-family: 'Cabin Condensed', sans-serif;
+        font-size: 28px;
+        margin-right: 15px;
+        &:hover {
+          color: lighten(#C2DFDD, 20%);
+        }
       }
     }
   }
@@ -35,13 +39,16 @@ body {
 }
 
 h1 {
-  font-family: 'Squada One', cursive;
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 70px;
 }
 
 .header {
   height: 900px;
  /* background-image: url("http://www.tokkoro.com/picsup/1352904-one-punch-man.jpg");*/
-  background-image: url("../../web/images/carnaval3.jpg");
+
 }
 
 .container-fluid {
