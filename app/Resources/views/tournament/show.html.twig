@@ -15,9 +15,15 @@
             <ul class="list-group list-group-flush">
                 {% for game in tournament.games if game.level == i %}
                     <li class="list-group-item">
+                        {% if game.team1 %}
+                            <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/32.png" alt="">
+                        {% endif %}
                         {{ game.team1.name|default('...') }}
                         vs
                         {{ game.team2.name|default('...') }}
+                        {% if game.team1 %}
+                            <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/32.png" alt="">
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
