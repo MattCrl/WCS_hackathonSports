@@ -94,4 +94,3 @@ class Tournament
         return $this->nbTeams;
     }
 }
-

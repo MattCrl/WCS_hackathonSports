@@ -17,6 +17,13 @@ class Team
         return $this->getName();
     }
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Country")
+     */
+    private $country;
+
+
     /**
      * @var int
      *
@@ -33,6 +40,12 @@ class Team
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1000, nullable=true)
+     */
+    private $description;
 
     /**
      * Get id
@@ -67,5 +80,37 @@ class Team
     {
         return $this->name;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+}

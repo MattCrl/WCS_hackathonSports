@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Country
 {
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
     /**
      * @var int
      *
@@ -94,4 +99,3 @@ class Country
         return $this->code;
     }
 }
-

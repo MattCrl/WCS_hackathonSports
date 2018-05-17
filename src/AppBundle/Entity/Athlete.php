@@ -12,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Athlete
 {
+
+    public function __toString()
+    {
+        return $this->getFirstname() . ' ' . $this->getLastName();
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Team")
+     */
+    private $team;
+
     /**
      * @var int
      *
@@ -186,5 +197,20 @@ class Athlete
     {
         return $this->image;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param mixed $team
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+    }
+}

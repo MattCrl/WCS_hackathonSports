@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Athlete;
 use AppBundle\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -66,9 +67,10 @@ class TeamController extends Controller
     public function showAction(Team $team)
     {
         $deleteForm = $this->createDeleteForm($team);
-
+        $players = $this->getPlayers($team);
         return $this->render('team/show.html.twig', array(
             'team' => $team,
+            'players' => $players,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -132,5 +134,12 @@ class TeamController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getPlayers(Team $team)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $athletes = $em->getRepository(Athlete::class)->findByTeam($team);
+        return $athletes;
     }
 }
