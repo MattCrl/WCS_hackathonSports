@@ -15,10 +15,14 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         {% for game in tournament.games if game.level == i %}
-                            <li class="list-group-item">
-                                {{ game.team1.name|default('...') }}
+                            <li class="list-group-item
+                            {% if app.request.get('_route_params').game_id is defined
+                            and app.request.get('_route_params').game_id == game.id %}
+                                active
+                            {% endif %}">
+                                {{ game.team1.name|default('???') }}
                                 vs
-                                {{ game.team2.name|default('...') }}
+                                {{ game.team2.name|default('???') }}
 
                                 <span>
                                     <a href="{{ path('admin_tournament_game_edit',  {'id': tournament.id, 'game_id': game.id} ) }}">
