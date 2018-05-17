@@ -76,7 +76,7 @@ class GameController extends Controller
     /**
      * Displays a form to edit an existing game entity.
      *
-     * @Route("/{id}/edit", name="game_edit")
+     * @Route("/{id}/edit", name="admin_game_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Game $game)
@@ -88,7 +88,10 @@ class GameController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('game_edit', array('id' => $game->getId()));
+            return $this->redirectToRoute('admin_tournament_game_edit', [
+                'id'=>$game->getTournament()->getId(),
+                'game_id'=>$game->getId()
+            ]);
         }
 
         return $this->render('game/edit.html.twig', array(

@@ -20,6 +20,10 @@ class Tournament
         4 => 'Seixièmes-de-finale'
     ];
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * @var int

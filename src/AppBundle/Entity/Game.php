@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Game
 {
 
+    public function __toString()
+    {
+       return $this->getTeam1() . 'vs' .$this->getTeam2();
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="Team")
      */
@@ -84,6 +89,13 @@ class Game
      */
     private $score2;
 
+
+    public function getWinner(): ?Team
+    {
+        if ($this->getScore1() > 0 && $this->getScore2() > 2)
+            return $this->getScore1() > $this->getScore2() ? $this->getTeam1() : $this->getTeam2();
+        return null;
+    }
 
     /**
      * Get id
@@ -212,6 +224,13 @@ class Game
      */
     public function getTeam1()
     {
+
+        if (!isset($this->team1)) {
+            if ($this->getPrevGame1()) {
+                return $this->getPrevGame1()->getWinner();
+            }
+        }
+
         return $this->team1;
     }
 
@@ -236,6 +255,12 @@ class Game
      */
     public function getTeam2()
     {
+        if (!isset($this->team2)) {
+            if ($this->getPrevGame2()) {
+                return $this->getPrevGame2()->getWinner();
+            }
+        }
+
         return $this->team2;
     }
 

@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Tournament;
+use AppBundle\Form\GameType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,14 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Tournament controller.
  *
- * @Route("tournament")
  */
 class TournamentController extends Controller
 {
+
     /**
      * Lists all tournament entities.
      *
-     * @Route("/", name="tournament_index")
+     * @Route("/archives", name="tournament_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -29,6 +31,23 @@ class TournamentController extends Controller
         $tournaments = $em->getRepository('AppBundle:Tournament')->findAll();
 
         return $this->render('tournament/index.html.twig', array(
+            'tournaments' => $tournaments,
+        ));
+    }
+
+    /**
+     * ADMIN List all tournament entities.
+     *
+     * @Route("admin/tournament", name="admin_tournament_index")
+     * @Method("GET")
+     */
+    public function AdminIndexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tournaments = $em->getRepository('AppBundle:Tournament')->findAll();
+
+        return $this->render('tournament/admin_index.html.twig', array(
             'tournaments' => $tournaments,
         ));
     }
@@ -54,7 +73,7 @@ class TournamentController extends Controller
     /**
      * Creates a new tournament entity.
      *
-     * @Route("/new", name="tournament_new")
+     * @Route("admin/tournament/new", name="admin_tournament_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -79,10 +98,10 @@ class TournamentController extends Controller
             $em->persist($finale);
             $em->flush();
 
-            return $this->redirectToRoute('tournament_show', array('id' => $tournament->getId()));
+            return $this->redirectToRoute('admin_tournament_edit', array('id' => $tournament->getId()));
         }
 
-        return $this->render('tournament/new.html.twig', array(
+        return $this->render('tournament/admin_new.html.twig', array(
             'tournament' => $tournament,
             'form' => $form->createView(),
         ));
@@ -91,7 +110,7 @@ class TournamentController extends Controller
     /**
      * Finds and displays last tournament entity.
      *
-     * @Route("/last", name="tournament_last_show")
+     * @Route("tournament", name="tournament_last_show")
      * @Method("GET")
      */
     public function showLast()
@@ -107,7 +126,7 @@ class TournamentController extends Controller
     /**
      * Finds and displays a tournament entity.
      *
-     * @Route("/{id}", name="tournament_show")
+     * @Route("archives/{id}", name="tournament_show")
      * @Method("GET")
      */
     public function showAction(Tournament $tournament)
@@ -123,14 +142,20 @@ class TournamentController extends Controller
     /**
      * Displays a form to edit an existing tournament entity.
      *
-     * @Route("/{id}/edit", name="tournament_edit")
+     * @Route("admin/tournament/{id}/edit", name="admin_tournament_edit")
+     * @Route("admin/tournament/{id}/edit/{game_id}", name="admin_tournament_game_edit")
+     * @ParamConverter("game", class="AppBundle:Game", options={"id" = "game_id"})
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Tournament $tournament)
+    public function editAction(Request $request, Tournament $tournament, Game $game = null)
     {
         $deleteForm = $this->createDeleteForm($tournament);
         $editForm = $this->createForm('AppBundle\Form\TournamentType', $tournament);
         $editForm->handleRequest($request);
+
+        $editGameFormView = $game ? $this->createForm(GameType::class, $game,
+            ['action' => $this->generateUrl('admin_game_edit', ['id' => $game->getId()])]
+        )->createView() : null;
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -138,8 +163,9 @@ class TournamentController extends Controller
             return $this->redirectToRoute('tournament_edit', array('id' => $tournament->getId()));
         }
 
-        return $this->render('tournament/edit.html.twig', array(
+        return $this->render('tournament/admin_edit.html.twig', array(
             'tournament' => $tournament,
+            'edit_game_form' => $editGameFormView,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -148,7 +174,7 @@ class TournamentController extends Controller
     /**
      * Deletes a tournament entity.
      *
-     * @Route("/{id}", name="tournament_delete")
+     * @Route("admin/tournament/{id}", name="admin_tournament_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Tournament $tournament)
@@ -175,7 +201,7 @@ class TournamentController extends Controller
     private function createDeleteForm(Tournament $tournament)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('tournament_delete', array('id' => $tournament->getId())))
+            ->setAction($this->generateUrl('admin_tournament_delete', array('id' => $tournament->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }

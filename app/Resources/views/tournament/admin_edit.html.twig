@@ -1,0 +1,55 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Tournament edit</h1>
+    <div class="row">
+        <div class="col">
+            {% if tournament.games[0] is defined %}
+                {% set currentLevel = tournament.games[0].level %}
+
+                {% for i in currentLevel..0 %}
+                    <div class="card">
+                        <div class="card-header">
+                            {{ constant('GAME_LEVELS', tournament)[i] }}
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for game in tournament.games if game.level == i %}
+                            <li class="list-group-item">
+                                {{ game.team1.name|default('...') }}
+                                vs
+                                {{ game.team2.name|default('...') }}
+
+                                <span>
+                                    <a href="{{ path('admin_tournament_game_edit',  {'id': tournament.id, 'game_id': game.id} ) }}">
+                                        Edit
+                                    </a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if edit_game_form is not null %}
+                {{ form_start(edit_game_form) }}
+                {{ form_widget(edit_game_form) }}
+                <input type="submit" value="Edit"/>
+                {{ form_end(edit_game_form) }}
+            {% endif %}
+
+        </div>
+    </div>
+
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('tournament_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#<li>#}
+    {#{{ form_start(delete_form) }}#}
+    {#<input type="submit" value="Delete">#}
+    {#{{ form_end(delete_form) }}#}
+    {#</li>#}
+    {#</ul>#}
+{% endblock %}
