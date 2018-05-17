@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Aqua Poney World CUP{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
     <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Prata|PT+Sans+Narrow" rel="stylesheet">
@@ -31,6 +33,7 @@
     {% block body %}{% endblock %}
 </div>
 <script src="{{ asset('build/app.js') }}"></script>
+<script src="{{ asset('build/admin.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

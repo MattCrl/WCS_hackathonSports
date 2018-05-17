@@ -88,9 +88,8 @@ class GameController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_tournament_game_edit', [
+            return $this->redirectToRoute('admin_tournament_edit', [
                 'id'=>$game->getTournament()->getId(),
-                'game_id'=>$game->getId()
             ]);
         }
 
