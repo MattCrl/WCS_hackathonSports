@@ -17,4 +17,4 @@
 /web/bundles/
 /web/build
 yarn.lock
-node_modules
+/node_modules
