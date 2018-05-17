@@ -49,7 +49,7 @@ class Athlete
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthdate", type="date")
+     * @ORM\Column(name="birthdate", type="date", nullable=true)
      */
     private $birthdate;
 
