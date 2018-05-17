@@ -1,61 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Team details</h1>
-
-    <hr>
-
-    <div class="row">
-        <div class="col-12 text-center">
-            <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
-            <h3>{{ team.country.name }} - {{ team.name }}</h3>
-        </div>
+<div class="row">
+    <div class="col-12">
+        <a role="button" class="btn btn-primary btn-sm" href="{{ path('team_index') }}">Back to the list</a>
     </div>
-
-    <hr>
-
-    <div class="row">
-        <div class="col-12">
-            <p>{{ team.description }}</p>
-        </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
+        <h2>{{ team.country.name }} - {{ team.name }}</h2>
     </div>
-
-
-    <h2>Players list</h2>
-    <div class="row">
-
-        <div class="col-3">
-            <div class="list-group">
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <p>{{ team.description }}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <ul>
             {% for player in players %}
-                <a href="{{ path('athlete_show', { 'id': player.id }) }}" class="list-group-item list-group-item-action">{{ player }}</a>
+                <li><a href="{{ path('athlete_show', { 'id': player.id }) }}">{{ player }}</a></li>
             {% endfor %}
-            </div>
+        </ul>
+    </div>
+    <div class="col-9">
+        <div class="float-right">
+            <img src="http://www.countryflags.io/be/shiny/64.png" alt="">
         </div>
+    </div>
+</div>
 
-        </div>
-        <div class="col-9">
-            <div class="float-right">
-                <img src="http://www.countryflags.io/be/shiny/64.png" alt="">
-            </div>
-        </div>
+<hr>
+<h2>Derniers résultats</h2>
+{% if match != null %}
+<p>
 
+    {{ match.score1 }}
+    <img src="http://www.countryflags.io/{{ match.team1.country.code }}/shiny/32.png" alt="">
+    {{ match.team1.name }} Vs {{ match.team2.name }}
+    <img src="http://www.countryflags.io/{{ match.team2.country.code }}/shiny/32.png" alt="">
+    {{ match.score2 }}
+</p>
+{% endif %}
+<p>
+    <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
+    <a role="button" class="btn btn-primary" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+</p>
 
-    <hr>
-    <h2>Last results</h2>
-
-    <p>
-        <img src="http://www.countryflags.io/be/shiny/32.png" alt="">
-        Team1 Vs Team2
-        <img src="http://www.countryflags.io/pt/shiny/32.png" alt="">
-    </p>
-    <p>
-        <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
-        <a role="button" class="btn btn-warning" href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
-
-
-        {{ form_start(delete_form) }}
-            <input class="btn btn-danger" type="submit" value="Delete">
-        {{ form_end(delete_form) }}
-    </p>
+<p>
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+</p>
 
 {% endblock %}

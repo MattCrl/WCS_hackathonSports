@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Athlete;
+use AppBundle\Entity\Game;
 use AppBundle\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Team controller.
@@ -68,9 +70,15 @@ class TeamController extends Controller
     {
         $deleteForm = $this->createDeleteForm($team);
         $players = $this->getPlayers($team);
+        $em = $this->getDoctrine()->getManager();
+        $match = $em->getRepository('AppBundle:Game')->getLastMatch($team);
+        if(count($match)==0){
+            $match[0]=null;
+        }
         return $this->render('team/show.html.twig', array(
             'team' => $team,
             'players' => $players,
+            'match' => $match[0],
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -142,4 +150,22 @@ class TeamController extends Controller
         $athletes = $em->getRepository(Athlete::class)->findByTeam($team);
         return $athletes;
     }
+
+    /**
+     * Get the last match of a team
+     *
+     * @param Team $team
+     *
+     * @return Team
+     */
+    public function getLastMatch(Team $team)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = 'SELECT * FROM game WHERE game.team1_id = '.$team->getId().' OR game.team2_id = '.$team->getId().' ORDER BY start_at LIMIT 1;';
+
+        $statement = $em->getConnection()->prepare($query);
+        $match = $statement->execute();
+        return $match;
+    }
+
 }
