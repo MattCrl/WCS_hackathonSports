@@ -51,7 +51,7 @@ class CountryController extends Controller
             return $this->redirectToRoute('country_show', array('id' => $country->getId()));
         }
 
-        return $this->render('country/new.html.twig', array(
+        return $this->render('country/admin_new.html.twig', array(
             'country' => $country,
             'form' => $form->createView(),
         ));
@@ -91,7 +91,7 @@ class CountryController extends Controller
             return $this->redirectToRoute('country_edit', array('id' => $country->getId()));
         }
 
-        return $this->render('country/edit.html.twig', array(
+        return $this->render('country/admin_edit.html.twig', array(
             'country' => $country,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
