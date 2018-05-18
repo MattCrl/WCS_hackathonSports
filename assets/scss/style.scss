@@ -2,14 +2,23 @@
 $blue: #191970;
 @import '~bootstrap/scss/bootstrap';
 
-.page-header
-{
+.page-header {
   background: $secondary;
   color: $white;
   text-align: center;
   padding: 30px;
   margin-bottom: 15px;
 }
+
+.imgPony {
+  height: 700px;
+  background-image: url("https://s1-ssl.dmcdn.net/RKsa-.jpg");
+}
+
+.jumbotron {
+  margin-bottom: 0;
+}
+
 //.navbar {
 //  -webkit-box-shadow: 0 8px 6px -6px #999;
 //  -moz-box-shadow: 0 8px 6px -6px #999;
