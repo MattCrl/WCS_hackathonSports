@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <link rel="stylesheet" href="{{ asset('build/admin-style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
@@ -13,24 +14,32 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
-    <a class="navbar-brand" href="#"><img width="100" src="{{ asset('images/logo.png') }}" ></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_homepage') }}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_team_index') }}">Teams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_tournament_index') }}">Archives</a>
-            </li>
-        </ul>
+    <div class="container">
+        <a class="navbar-brand" href="#"><img width="100" src="{{ asset('images/logo.png') }}" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_homepage') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_team_index') }}">Teams</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_tournament_index') }}">Archives</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+<div class="page-header">
+    {% block pageheader %}{% endblock %}
+
+</div>
+
 <div class="container-fluid">
     {% block fluid %}{% endblock %}
 </div>
