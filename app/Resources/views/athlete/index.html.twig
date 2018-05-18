@@ -7,15 +7,17 @@
 
     <div class="row">
         {% for athlete in athletes %}
-            <div class="card col-3">
-                <div class="card-body text-center">
-                    <a href="{{ path('athlete_show', { 'id': athlete.id }) }}">
-                    <img class="img-fluid" src="{{ asset('images/') }}{{ athlete.image }}">
-                    <h4 class="card-title">{{ athlete }}</h4>
-                    {#<a role="button" class="btn btn-info" ">See#}
-                        {#more#}
-                    {##}
-                    </a>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <a href="{{ path('athlete_show', { 'id': athlete.id }) }}">
+                        <img class="img-fluid" src="{{ asset('images/') }}{{ athlete.image }}">
+                        <h4 class="card-title">{{ athlete }}</h4>
+                        {#<a role="button" class="btn btn-info" ">See#}
+                            {#more#}
+                        {##}
+                        </a>
+                    </div>
                 </div>
             </div>
         {% else %}
