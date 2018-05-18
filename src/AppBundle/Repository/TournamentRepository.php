@@ -25,4 +25,13 @@ class TournamentRepository extends EntityRepository
             ->getQuery()->getOneOrNullResult();
     }
 
+    public function findAllLast()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()->getResult();
+    }
+
 }
