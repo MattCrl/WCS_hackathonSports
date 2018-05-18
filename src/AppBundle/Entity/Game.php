@@ -89,6 +89,14 @@ class Game
      */
     private $score2;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="infos", type="text", nullable=true)
+     */
+    private $infos;
+
+
 
     public function getWinner(): ?Team
     {
@@ -359,6 +367,23 @@ class Game
     {
         return $this->level;
     }
+
+    /**
+     * @return text
+     */
+    public function getInfos()
+    {
+        return $this->infos;
+    }
+
+    /**
+     * @param text $infos
+     */
+    public function setInfos($infos)
+    {
+        $this->infos = $infos;
+    }
+
 
 
 }

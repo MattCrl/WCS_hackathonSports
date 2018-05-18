@@ -31,9 +31,11 @@
                             {% if game.team1 %}
                                 <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
                             {% endif %}
-                            {{ game.team1.name|default('???') }}
-                            vs
-                            {{ game.team2.name|default('???') }}
+                            <a href="{{ path('game_show', { 'id': game.id })  }}">
+                                {{ game.team1.name|default('???') }}
+                                vs
+                                {{ game.team2.name|default('???') }}
+                            </a>
                             {% if game.team2 %}
                                 <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
                             {% endif %}
