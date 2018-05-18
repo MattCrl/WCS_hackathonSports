@@ -1,2 +1,29 @@
 @import '~chosen-js/chosen.css';
 
+.ourWebsite {
+  padding: 50px 0px;
+  background-color: white;
+  color: black;
+}
+
+
+.admin {
+  color: red;
+  font-weight: bold;
+}
+
+.bg-admin {
+  background-color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.page-header {
+  background: white;
+  color: black;
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 15px;
+}
