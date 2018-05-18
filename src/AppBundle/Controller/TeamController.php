@@ -53,7 +53,7 @@ class TeamController extends Controller
     /**
      * Creates a new team entity.
      *
-     * @Route("admin/new", name="admin_team_new")
+     * @Route("admin/team/new", name="admin_team_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)

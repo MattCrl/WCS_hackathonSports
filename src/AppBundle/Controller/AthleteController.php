@@ -51,7 +51,7 @@ class AthleteController extends Controller
     /**
      * Creates a new athlete entity ADMIN.
      *
-     * @Route("admin/new", name="admin_athlete_new")
+     * @Route("admin/athlete/new", name="admin_athlete_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)

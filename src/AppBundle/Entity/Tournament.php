@@ -13,11 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Tournament
 {
     const GAME_LEVELS = [
-        0 => 'Finale',
-        1 => 'Demi-finales',
-        2 => 'Quarts-de-finale',
-        3 => 'Huitièmes-de-finale',
-        4 => 'Seixièmes-de-finale'
+        0 => 'Final',
+        1 => 'Semi-final',
+        2 => 'Quarter finale',
+        3 => 'Round of sixteen',
+        4 => 'round of 32'
     ];
 
     public function __toString()

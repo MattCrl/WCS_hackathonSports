@@ -11,7 +11,7 @@
                     <img class="img-fluid" src="{{ asset('images/')}}{{ athlete.image }}">
                     <h4 class="card-title">{{ athlete }}</h4>
                     <a role="button" class="btn btn-info" href="{{ path('admin_athlete_show', { 'id': athlete.id }) }}">See more</a>
-                    <a role="button" class="btn btn-primary" href="{{ path('admin_athlete_edit', { 'id': athlete.id }) }}">Edit</a>
+                    <a role="button" class="btn btn-warning" href="{{ path('admin_athlete_edit', { 'id': athlete.id }) }}">Edit</a>
                 </div>
             </div>
         {% else %}
@@ -20,7 +20,7 @@
     </div>
 
     <p>
-        <a class="btn btn-primary" href="{{ path('admin_athlete_new') }}">Add a new athlete</a>
+        <a class="btn btn-success" href="{{ path('admin_athlete_new') }}">Add a new athlete</a>
     </p>
 
 {% endblock %}
