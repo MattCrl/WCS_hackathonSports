@@ -1,5 +1,7 @@
 import 'flatpickr'
 import {French} from 'flatpickr/dist/l10n/fr.js'
+import $ from 'jquery'
+import 'chosen-js'
 
 flatpickr('.flatpickr', {
     utc: false,
@@ -10,3 +12,6 @@ flatpickr('.flatpickr', {
     time_24hr: true
 
 })
+
+$('.selectize').chosen();
+console.log($('.selectize'));

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Aqua Poney World CUP{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/admin-style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     {% block stylesheets %}{% endblock %}
@@ -12,7 +13,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}" ></a>
+    <a class="navbar-brand" href="#"><img width="100" src="{{ asset('images/logo.png') }}" ></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

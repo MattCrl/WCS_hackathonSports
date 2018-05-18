@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block pageheader %}
+    <h2>{{tournament.name}}</h2>
+    <h3>Tournament</h3>
+
+{% endblock %}
+
 {% block body %}
-    <h1>Tournament</h1>
 
     {% if tournament.games[0] is defined %}
         {% set currentLevel = tournament.games[0].level %}
 
         {% for i in currentLevel..0 %}
             <div class="card">
-                <div class="card-header h1">
+                <div class="card-header">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-11 h3">
                             {{ constant('GAME_LEVELS', tournament)[i] }}
                         </div>
                         <div class="col-1">
@@ -22,19 +27,19 @@
             <ul class="list-group list-group-flush">
                 {% for game in tournament.games if game.level == i %}
                     <li class="list-group-item text-center">
-                        <div class="h1">
-                        {% if game.team1 %}
-                            <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
-                        {% endif %}
-                        {{ game.team1.name|default('???') }}
-                        vs
-                        {{ game.team2.name|default('???') }}
-                        {% if game.team2 %}
-                            <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
-                        {% endif %}
+                        <div class="">
+                            {% if game.team1 %}
+                                <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
+                            {% endif %}
+                            {{ game.team1.name|default('???') }}
+                            vs
+                            {{ game.team2.name|default('???') }}
+                            {% if game.team2 %}
+                                <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
+                            {% endif %}
                         </div>
 
-                        <div class="h4">
+                        <div class="">
                             {% if game.startAt %}
                                 {{ game.startAt|date('d F Y H:i') }}
                             {% endif %}{% if game.startAt and game.place %},

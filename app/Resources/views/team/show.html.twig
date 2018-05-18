@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
+{% block pageheader %}
+    <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
+    <h2>{{ team.country.name }} - {{ team.name }}</h2>
+{% endblock %}
+{% block body %}
 <div class="row">
     <div class="col-12 text-center">
-        <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
-        <h2>{{ team.country.name }} - {{ team.name }}</h2>
+
     </div>
 </div>
 <hr>
@@ -15,16 +18,15 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-3">
-        <ul>
-            {% for player in players %}
-                <li><a href="{{ path('athlete_show', { 'id': player.id }) }}">{{ player }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="col-9">
+    {% for player in players %}
+        <div class="col-4">
+            <h2 class="text-center"><a href="{{ path('athlete_show', { 'id': player.id }) }}">{{ player }}</a></h2>
+            <img class="team-img mx-auto d-block" src="{{ asset('images/') }}{{ player.image }}" alt="">
+        </div>
+    {% endfor %}
+    <div class="col-4">
         <div class="float-right">
-            <img src="{{ asset('images/') }}{{ team.image }}" alt="">
+            <img class="img-fluid" src="{{ asset('images/') }}{{ team.image }}" alt="">
         </div>
     </div>
 </div>

@@ -1,21 +1,52 @@
 {% extends 'base.html.twig' %}
 
+{% block pageheader %}
+  <h2>Teams</h2>
+
+{% endblock %}
+
+
 {% block body %}
-    <div class="row">
-        <h1>Teams</h1>
-    </div>
+
+
 
     <div class="row">
         {% for team in teams %}
-        <div class="media col-4">
-            <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="Country flag">
-            <div class="media-body">
-                <h3 class="mt-0">{{ team.name }}</h3>
-                <a role="button" class="btn btn-info" href="{{ path('team_show', { 'id': team.id }) }}">See more</a>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <a href="{{ path('team_show', { 'id': team.id }) }}" class="card-link">
+                        <div >
+
+                            <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
+                        </div>
+
+                        {{team.name}}</a>
+                    </div>
+                </div>
             </div>
-        </div>
         {% else %}
             No teams Yet
         {% endfor %}
     </div>
 {% endblock %}
+
+
+           {##}
+            {#<div class="card-body">#}
+                {#<img class="card-img-top" src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png"#}
+                     {#alt="Country flag">#}
+
+                {#<a href="#" class="card-link">Another link</a>#}
+
+                {#<h5 class="card-title">Card title</h5>#}
+                {#<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional#}
+                    {#content. This content is a little bit longer.</p>#}
+                {#<p class="card-text">#}
+                    {#<small class="text-muted">Last updated 3 mins ago</small>#}
+                {#</p>#}
+            {#</div>#}
+            {#<div class="media-body">#}
+            {#<h3 class="mt-0">{{ team.name }}</h3>#}
+            {#<a role="button" class="btn btn-info" href="{{ path('team_show', { 'id': team.id }) }}">See more</a>#}
+            {#</div>#}
