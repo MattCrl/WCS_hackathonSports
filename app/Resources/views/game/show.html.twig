@@ -19,8 +19,7 @@
             <div class="row">
                 <div class="col text-center">
                     <h2>
-                        <a href="{{ path('team_show', { 'id': game.team1.id }) }}">{{ game.team1 }}</a>
-                        : {{ game.score1|default('Not available yet') }}
+                        <a href="{{ path('team_show', { 'id': game.team1.id }) }}">{{ game.team1.name }}</a>
                     </h2>
                 </div>
             </div>
@@ -32,7 +31,7 @@
             <div class="row">
                 <div class="col text-center">
                     <h1>
-                        <span class="score">{{ game.score1 }}</span>
+                        <span class="score">{{ game.score1|default('Not available yet') }}</span>
                     </h1>
                 </div>
             </div>
@@ -53,7 +52,7 @@
             <div class="row">
                 <div class="col text-center">
                     <h2>
-                        <a href="{{ path('team_show', { 'id': game.team2.id }) }}">{{ game.team2 }}</a>: {{ game.score2|default('Not available yet') }}
+                        <a href="{{ path('team_show', { 'id': game.team2.id }) }}">{{ game.team2.name }}</a>
                     </h2>
                 </div>
             </div>
@@ -65,7 +64,7 @@
             <div class="row">
                 <div class="col text-center">
                     <h1>
-                        <span class="score">{{ game.score2 }}</span>
+                        <span class="score">{{ game.score2|default('Not available yet') }}</span>
                     </h1>
                 </div>
             </div>
