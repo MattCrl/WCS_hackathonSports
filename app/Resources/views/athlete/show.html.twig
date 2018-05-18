@@ -26,8 +26,16 @@
             {% if athlete.image %} <img class="img-fluid" src="{{ asset('images/') }}{{ athlete.image }}">{% endif %}
         </div>
     </div>
+    <h3>Team</h3>
+    <a href="{{ path('team_show', { 'id': athlete.team.id }) }}" class="card-link">
 
-    <p>
+
+        <img src="http://www.countryflags.io/{{ athlete.team.country.code }}/shiny/64.png" alt="">
+
+
+        {{ athlete.team.name }}</a>
+
+    <p class="text-center">
         <a role="button" class="btn btn-primary" href="{{ path('athlete_index') }}">Back to Athletes list</a>
     </p>
 {% endblock %}
