@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block pageheader %}
-    <h2>{{tournament.name}}</h2>
+    <h2>{{ tournament.name }}</h2>
     <h3>Tournament</h3>
 
 {% endblock %}
@@ -31,19 +31,28 @@
                             {% if game.team1 %}
                                 <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
                             {% endif %}
-                            {% if game.team1 and game.team2%}
-                                <a href="{{ path('game_show', { 'id': game.id })  }}">
-                            {% endif %}
+                            {% if game.team1 and game.team2 %}
+
+
+                            <a href="{{ path('game_show', { 'id': game.id }) }}">
+                                {% endif %}
+
+
                                 {{ game.team1.name|default('???') }}
                                 vs
                                 {{ game.team2.name|default('???') }}
-                            {% if game.team1 and game.team2%}
-                                </a>
+                                {% if game.team1 and game.team2 %}
+                            </a>
                             {% endif %}
                             {% if game.team2 %}
                                 <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
                             {% endif %}
                         </div>
+
+                                {% if game.score1 and game.score2 %}
+                                <div class="score-container">   <span class="score">{{ game.score1 }}</span>
+                                    <span class="score">{{ game.score2 }}</span> </div>
+                                {% endif %}
 
                         <div class="">
                             {% if game.startAt %}
