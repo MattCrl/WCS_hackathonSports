@@ -13,6 +13,7 @@
     "sass-loader": "^7.0.1"
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "bootstrap": "^4.1.1",
     "chosen-js": "^1.8.5",
     "flatpickr": "^4.5.0",

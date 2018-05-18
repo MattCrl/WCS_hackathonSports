@@ -10,14 +10,25 @@
         <thead>
         <tr>
             <th>Tournament</th>
-            <th>Number of teams</th>
+            <th>Winner</th>
         </tr>
         </thead>
         <tbody>
         {% for tournament in tournaments %}
             <tr>
                 <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
-                <td>{{ tournament.nbTeams }}</td>
+                <td>
+
+                    {% if tournament.games.last.score1 is not null %}
+
+                        <img width="25"  src="{{ asset('images/trophy.png') }}" alt="">
+
+                            <img width="30" src="http://www.countryflags.io/{{ tournament.games.last.getWinner.country.code }}/shiny/64.png" alt="">
+                        <a href="{{ path('team_show',{'id':tournament.games.last.getWinner.id}) }}"> {{ tournament.games.last.getWinner }}</a>
+                    {% else %}
+                        <span class="text-muted">Not available yet</span>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

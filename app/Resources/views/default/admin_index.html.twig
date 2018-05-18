@@ -1,17 +1,42 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block fluid %}
-    <section class="header">
-        <div id="wrapper">
-            <div id="container">
-                <div id="welcome">
-                    <h1><span>Aqua Poney World CUP ADMIN</span></h1>
-                </div>
-                <div class="row">
-                    <a href="{{ path('tournament_index') }}" class="btn btn-primary offset-4 col-4" role="button">Go to the tournaments</a>
-                </div>
-            </div>
+{% block pageheader %}
+    <div class=" text-center">
+        <div class="container">
+            <h1 class="display-4"><span class="admin">ADMIN</span> | AQUA PONY WORLD CUP</h1>
         </div>
+    </div>
+{% endblock %}
+
+
+{% block fluid %}
+
+    <section class="imgPony">
+
+    </section>
+
+    <section class="lastTournaments">
+        <div class="container">
+            <h2>Last tournaments</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number of teams</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tournament in tournaments %}
+                    <tr>
+                        <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
+                        <td>{{ tournament.nbTeams }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
     </section>
 
 {% endblock %}

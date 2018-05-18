@@ -19,7 +19,8 @@
             <div class="row">
                 <div class="col text-center">
                     <h2>
-                        <a href="{{ path('team_show', { 'id': game.team1.id })  }}">{{ game.team1 }}</a>
+                        <a href="{{ path('team_show', { 'id': game.team1.id }) }}">{{ game.team1 }}</a>
+                        : {{ game.score1|default('Not available yet') }}
                     </h2>
                 </div>
             </div>
@@ -52,7 +53,7 @@
             <div class="row">
                 <div class="col text-center">
                     <h2>
-                        <a href="{{ path('team_show', { 'id': game.team2.id })  }}">{{ game.team2 }}</a>
+                        <a href="{{ path('team_show', { 'id': game.team2.id }) }}">{{ game.team2 }}</a>: {{ game.score2|default('Not available yet') }}
                     </h2>
                 </div>
             </div>
@@ -69,5 +70,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-center mt-5">
+        <a class="btn btn-primary" href="{{ path('tournament_show',{'id':game.tournament.id}) }}">Back to tournament</a>
     </div>
 {% endblock %}

@@ -4,7 +4,7 @@
     <div class=" text-center">
         <div class="container">
             <h1 class="display-4">AQUA PONY WORLD CUP</h1>
-            <p class="lead">The world's leading competition for pony's lovers. </p>
+            <p class="lead">The world's leading competition for ponies' lovers. </p>
         </div>
     </div>
 {% endblock %}
@@ -22,14 +22,25 @@
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Number of teams</th>
+                    <th scope="col">Winner</th>
                 </tr>
                 </thead>
                 <tbody>
             {% for tournament in tournaments %}
             <tr>
                 <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
-                <td>{{ tournament.nbTeams }}</td>
+                <td>
+
+                    {% if tournament.games.last.score1 is not null %}
+
+                        <img width="25"  src="{{ asset('images/trophy.png') }}" alt="">
+
+                        <img width="30" src="http://www.countryflags.io/{{ tournament.games.last.getWinner.country.code }}/shiny/64.png" alt="">
+                        <a href="{{ path('team_show',{'id':tournament.games.last.getWinner.id}) }}"> {{ tournament.games.last.getWinner }}</a>
+                    {% else %}
+                        <span class="text-muted">Not available yet</span>
+                    {% endif %}
+                </td>
             </tr>
                 {% endfor %}
                 </tbody>
@@ -38,19 +49,6 @@
         </div>
 
     </section>
-
-
-
-    <section class="ourWebsite">
-        <div class="container">
-        <h2>Our website</h2>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-        </div>
-    </section>
-
-
-
-
 
 {% endblock %}
 

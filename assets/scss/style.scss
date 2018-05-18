@@ -1,5 +1,8 @@
 //$font-family-sans-serif: 'PT Sans Narrow', sans-serif;
 $blue: #191970;
+$theme-colors: (
+  "warning": #0583F2
+);
 @import '~bootstrap/scss/bootstrap';
 
 body {
@@ -33,6 +36,21 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+.score-container{
+  margin-bottom: 15px;
+}
+.score{
+  @include badge-variant($info);
+ padding: 15px;
 }
 
 //.navbar {

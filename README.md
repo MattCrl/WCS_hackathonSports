@@ -10,7 +10,7 @@ hackathonSports
 
 Description
 ===============
-*La Fédération Internationale du <sport collectif> vous contacte pour créer le site qui va permettre à des centaines de millions de personnes de suivre cet événement exceptionnel sur internet*
+*La FAP (Fédération d'Aqua Poney) vous contacte pour créer le site qui va permettre à des centaines de millions de personnes de suivre cet événement exceptionnel sur internet*
 
 **Le minimum demandé par la fédération :**
 
