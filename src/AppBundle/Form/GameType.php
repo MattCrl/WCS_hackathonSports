@@ -34,7 +34,8 @@ class GameType extends AbstractType
         }
         $builder
             ->add('score1')
-            ->add('score2');
+            ->add('score2')
+            ->add('infos');
 
 
     }

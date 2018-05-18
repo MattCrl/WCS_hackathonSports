@@ -1,44 +1,61 @@
 {% extends 'base.html.twig' %}
 
+
+{% block pageheader %}
+    <h2>
+        <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
+        {{ game.team1 }}
+        vs
+        {{ game.team2 }}
+        <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
+    </h2>
+    <h3>{% if game.startAt %}{{ game.startAt|date('d F Y H:i') }}{% endif %}</h3>
+
+{% endblock %}
 {% block body %}
-    <h1>Game</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ game.id }}</td>
-            </tr>
-            <tr>
-                <th>Startat</th>
-                <td>{% if game.startAt %}{{ game.startAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Place</th>
-                <td>{{ game.place }}</td>
-            </tr>
-            <tr>
-                <th>Score1</th>
-                <td>{{ game.score1 }}</td>
-            </tr>
-            <tr>
-                <th>Score2</th>
-                <td>{{ game.score2 }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('game_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('game_edit', { 'id': game.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>
+                        Results
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>
+                        <a href="{{ path('team_show', { 'id': game.team1.id })  }}">{{ game.team1 }}</a> : {{ game.score1|default('Not aviable yet') }}
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>
+                        <a href="{{ path('team_show', { 'id': game.team2.id })  }}">{{ game.team2 }}</a>: {{ game.score2|default('Not aviable yet') }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>
+                        Infos
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Place : {{ game.place }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Match infos : {{ game.infos }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
