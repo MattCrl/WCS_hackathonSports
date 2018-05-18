@@ -34,4 +34,9 @@ class TournamentRepository extends EntityRepository
             ->getQuery()->getResult();
     }
 
+    public function findAll()
+    {
+        return $this->findBy(array(), array('id' => 'DESC'));
+    }
+
 }
