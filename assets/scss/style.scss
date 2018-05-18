@@ -15,8 +15,14 @@ body {
   text-align: center;
   padding: 30px;
   margin-bottom: 15px;
-}
+  position: relative;
+  overflow: hidden;
 
+}
+.anim-image{
+  position: absolute;
+  right: -5%;
+}
 .imgPony {
   margin-top: -15px;
   height: 650px;
