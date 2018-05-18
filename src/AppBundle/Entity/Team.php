@@ -14,7 +14,7 @@ class Team
 {
     public function __toString()
     {
-        return $this->getName();
+        return $this->getName() . ' - ' . $this->getCountry();
     }
 
 
