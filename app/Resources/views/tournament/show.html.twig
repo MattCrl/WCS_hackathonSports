@@ -2,8 +2,13 @@
 
 {% block pageheader %}
     <h2>{{ tournament.name }}</h2>
-    <h3>Tournament</h3>
+    {% if tournament.games.last.score1 is not null %}
 
+        <h3><img width="60"  src="{{ asset('images/trophy.png') }}" alt="">
+
+            <img width="30" src="http://www.countryflags.io/{{ tournament.games.last.getWinner.country.code }}/shiny/64.png" alt="">
+            {{ tournament.games.last.getWinner }}</h3>
+    {% endif %}
 {% endblock %}
 
 {% block body %}
