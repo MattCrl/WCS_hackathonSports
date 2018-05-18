@@ -30,7 +30,7 @@ class TournamentRepository extends EntityRepository
         return $this->createQueryBuilder('t')
             ->select('t')
             ->orderBy('t.id', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults(5)
             ->getQuery()->getResult();
     }
 
