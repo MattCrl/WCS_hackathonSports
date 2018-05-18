@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,9 +27,10 @@ class GameType extends AbstractType
             )
             ->add('place');
         if ($maxLevel === $game->getLevel()) {
+            $teamAttr = ['attr' => ['class'=> 'selectize']];
             $builder
-                ->add('team1')
-                ->add('team2');
+                ->add('team1', null, $teamAttr)
+                ->add('team2', null, $teamAttr);
         }
         $builder
             ->add('score1')

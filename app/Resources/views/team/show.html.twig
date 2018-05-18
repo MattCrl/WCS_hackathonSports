@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
+
+{% block pageheader %}
+    <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
+    <h2>{{ team.country.name }} - {{ team.name }}</h2>
+{% endblock %}
 {% block body %}
 <div class="row">
     <div class="col-12 text-center">
-        <img src="http://www.countryflags.io/{{ team.country.code }}/shiny/64.png" alt="">
-        <h2>{{ team.country.name }} - {{ team.name }}</h2>
+
     </div>
 </div>
 <hr>

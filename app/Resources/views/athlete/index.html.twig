@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
+{% block pageheader %}
+    <h1>Athletes</h1>
 
+{% endblock %}
 {% block body %}
-    <div class="row">
-        <h1>Athletes</h1>
-    </div>
+
     <div class="row">
         {% for athlete in athletes %}
             <div class="card col-3">
                 <div class="card-body text-center">
-                    <img class="img-fluid" src="{{ asset('images/')}}{{ athlete.image }}">
+
+                    <img class="img-fluid" src="{{ asset('images/') }}{{ athlete.image }}">
                     <h4 class="card-title">{{ athlete }}</h4>
-                    <a role="button" class="btn btn-info" href="{{ path('athlete_show', { 'id': athlete.id }) }}">See more</a>
+                    <a role="button" class="btn btn-info" href="{{ path('athlete_show', { 'id': athlete.id }) }}">See
+                        more</a>
                 </div>
             </div>
         {% else %}
