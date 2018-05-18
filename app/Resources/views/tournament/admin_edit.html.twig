@@ -45,7 +45,7 @@
                 {% endfor %}
             {% endif %}
 
-            {% if tournament.games.last.score1 is defined %}
+            {% if tournament.games.last.score1 is not null %}
                 <br>
                 <h2>Winner of this tournament is</h2>
                 <h3>{{ tournament.games.last.getWinner }}</h3>
@@ -57,7 +57,7 @@
 
                 {{ form_start(edit_game_form) }}
                 {{ form_widget(edit_game_form) }}
-                <input type="submit" value="Edit"/>
+                <input class="btn btn-warning" type="submit" value="Edit"/>
                 {{ form_end(edit_game_form) }}
             </div>
 

@@ -31,11 +31,11 @@
     </p>
 
     <p>
-        <a class="btn btn-primary" href="{{ path('admin_athlete_edit', { 'id': athlete.id }) }}">Edit</a>
+        <a class="btn btn-warning" href="{{ path('admin_athlete_edit', { 'id': athlete.id }) }}">Edit</a>
     </p>
 
     {{ form_start(delete_form) }}
-    <input type="submit" value="Delete">
+    <input class="btn btn-danger" type="submit" value="Delete">
     {{ form_end(delete_form) }}
 
 {% endblock %}
