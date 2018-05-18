@@ -2,6 +2,10 @@
 $blue: #191970;
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
 .page-header {
   background: $secondary;
   color: $white;
@@ -11,12 +15,24 @@ $blue: #191970;
 }
 
 .imgPony {
-  height: 700px;
-  background-image: url("https://s1-ssl.dmcdn.net/RKsa-.jpg");
+  margin-top: -15px;
+  height: 650px;
+  background-image: url("../../web/images/genant.jpg");
 }
 
-.jumbotron {
-  margin-bottom: 0;
+.ourWebsite {
+  padding: 50px 0px;
+  background-color: $secondary;
+  color: white;
+}
+
+.lastTournaments {
+  padding: 50px 0px;
+
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
 }
 
 //.navbar {

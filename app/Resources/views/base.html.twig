@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}"/>
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed|Prata|PT+Sans+Narrow|Ranchers" rel="stylesheet">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> <body>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="{{ path('homepage') }}">
@@ -47,12 +45,14 @@
 
 </nav>
 
-<div class="">
-    {% block fluid %}{% endblock %}
-</div>
+
 <div class="page-header">
         {% block pageheader %}{% endblock %}
 
+</div>
+
+<div class="">
+    {% block fluid %}{% endblock %}
 </div>
 
 <div class="container">
