@@ -26,7 +26,11 @@ class DefaultController extends Controller
      */
     public function adminIndexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $tournaments = $em->getRepository('AppBundle:Tournament')->findAllLast();
+
         return $this->render('default/admin_index.html.twig', [
+            'tournaments' => $tournaments
         ]);
     }
 }
