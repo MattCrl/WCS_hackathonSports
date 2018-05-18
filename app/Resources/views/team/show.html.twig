@@ -6,45 +6,57 @@
     <h2>{{ team.country.name }} - {{ team.name }}</h2>
 {% endblock %}
 {% block body %}
-<div class="row">
-    <div class="col-12 text-center">
+    <div class="row">
+        <div class="col-12 text-center">
 
-    </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col-12">
-        <p>{{ team.description }}</p>
-    </div>
-</div>
-<div class="row">
-    {% for player in players %}
-        <div class="col-4">
-            <h2 class="text-center"><a href="{{ path('athlete_show', { 'id': player.id }) }}">{{ player }}</a></h2>
-            <img class="team-img mx-auto d-block" src="{{ asset('images/') }}{{ player.image }}" alt="">
-        </div>
-    {% endfor %}
-    <div class="col-4">
-        <div class="float-right">
-            <img class="img-fluid" src="{{ asset('images/') }}{{ team.image }}" alt="">
         </div>
     </div>
-</div>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <p>{{ team.description }}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="text-center">
+                <h2>Team's picture</h2>
+                <img class="img-fluid" src="{{ asset('images/') }}{{ team.image }}" alt="">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <h2>Team's athletes</h2>
+    </div>
+    <div class="row justify-content-center">
+        {% for player in players %}
+            <div class="col-4">
+                <h3 class="text-center"><a href="{{ path('athlete_show', { 'id': player.id }) }}">{{ player }}</a></h3>
+                <img class="team-img mx-auto d-block" src="{{ asset('images/') }}{{ player.image }}" alt="">
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <h2>Lasts results</h2>
+    </div>
+    <div class="row justify-content-center">
+        {% if match != null %}
+            <p>
 
-<hr>
-<h2>Derniers résultats</h2>
-{% if match != null %}
-<p>
-
-    {{ match.score1 }}
-    <img src="http://www.countryflags.io/{{ match.team1.country.code }}/shiny/32.png" alt="">
-    {{ match.team1.name }} Vs {{ match.team2.name }}
-    <img src="http://www.countryflags.io/{{ match.team2.country.code }}/shiny/32.png" alt="">
-    {{ match.score2 }}
-</p>
-{% endif %}
-<p>
-    <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
-</p>
+                {{ match.score1 }}
+                <img src="http://www.countryflags.io/{{ match.team1.country.code }}/shiny/32.png" alt="">
+                {{ match.team1.name }} Vs {{ match.team2.name }}
+                <img src="http://www.countryflags.io/{{ match.team2.country.code }}/shiny/32.png" alt="">
+                {{ match.score2 }}
+            </p>
+        {% endif %}
+    </div>
+    <div class="row justify-content-center">
+        <p>
+            <a role="button" class="btn btn-primary" href="{{ path('team_index') }}">Back to Teams</a>
+        </p>
+    </div>
 
 {% endblock %}

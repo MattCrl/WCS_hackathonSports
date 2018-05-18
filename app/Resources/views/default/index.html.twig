@@ -18,6 +18,22 @@
     <section class="lastTournaments">
         <div class="container">
         <h2>Last tournaments</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number of teams</th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for tournament in tournaments %}
+            <tr>
+                <td><a href="{{ path('tournament_show', { 'id': tournament.id }) }}">{{ tournament.name }}</a></td>
+                <td>{{ tournament.nbTeams }}</td>
+            </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
         </div>
 
