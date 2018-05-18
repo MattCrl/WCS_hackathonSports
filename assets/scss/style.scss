@@ -52,7 +52,15 @@ h1 {
   @include badge-variant($info);
  padding: 15px;
 }
+.main-title {
+  text-transform: uppercase;
+  overflow: hidden;
+}
 
+.main-title .letter {
+  display: inline-block;
+  line-height: 1em;
+}
 //.navbar {
 //  -webkit-box-shadow: 0 8px 6px -6px #999;
 //  -moz-box-shadow: 0 8px 6px -6px #999;
