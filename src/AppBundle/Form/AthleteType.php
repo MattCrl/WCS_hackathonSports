@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,18 @@ class AthleteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstname')->add('lastname')->add('birthdate')->add('biography')->add('image')->add('team');
+        $builder
+            ->add('firstname')
+            ->add('lastname')
+            ->add('birthdate', DateType::class,
+                [
+                    'widget' => 'single_text', 'model_timezone' => 'Europe/Paris', 'html5' => false,
+                    'attr' => ['class' => 'flatpickr']
+                ]
+            )
+            ->add('biography')
+            ->add('image')
+            ->add('team');
     }
     /**
      * {@inheritdoc}

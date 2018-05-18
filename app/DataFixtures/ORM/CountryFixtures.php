@@ -57,7 +57,6 @@ class CountryFixtures extends Fixture
                 'firstname2' => 'Erza',
                 'lastname2' => 'Scarlet',
                 'image2' => 'poney12.jpg'
-
             ],
             [
                 'code' => 'AR',
@@ -215,8 +214,8 @@ class CountryFixtures extends Fixture
                 'firstname1' => 'Ocean',
                 'lastname1' => 'Sunset',
                 'image1' => 'poney2.jpg',
-                'firstname2' => 'John',
-                'lastname2' => 'Doe',
+                'firstname2' => 'Lady',
+                'lastname2' => 'Dada',
                 'image2' => 'poney12.jpg'
             ],
             [
