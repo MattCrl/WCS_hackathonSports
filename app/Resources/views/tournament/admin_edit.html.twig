@@ -1,7 +1,7 @@
 {% extends 'admin_base.html.twig' %}
 
 {% block body %}
-    <h1>Tournament edit</h1>
+    <h1>Edit Tournament "{{ tournament.name }}"</h1>
     <div class="row">
         <div class="col">
             {% if tournament.games[0] is defined %}
@@ -13,30 +13,38 @@
                             {{ constant('GAME_LEVELS', tournament)[i] }}
                         </div>
                     </div>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush text-center">
                         {% for game in tournament.games if game.level == i %}
                             <li class="list-group-item
                             {% if app.request.get('_route_params').game_id is defined
                             and app.request.get('_route_params').game_id == game.id %}
                                 active
                             {% endif %}">
-                                {% if game.team1.countryCode is defined %}
-                                <img src="http://www.countryflags.io/{{ game.team1.countryCode }}/shiny/32.png" alt="">
-                                {% endif %}
-                                {{ game.team1.name|default('???') }}
-                                <span class="font-weight-bold">vs</span>
-                                {{ game.team2.name|default('???') }}
-                                {% if game.team2.countryCode is defined %}
-                                <img src="http://www.countryflags.io/{{ game.team2.countryCode }}/shiny/32.png" alt="">
-                                {% endif %}
+                                <div>
+                                    {% if game.team1 %}
+                                        <img src="http://www.countryflags.io/{{ game.team1.country.code }}/shiny/64.png" alt="">
+                                    {% endif %}
 
-                                {% if app.request.get('_route_params').game_id is not defined
-                                    or app.request.get('_route_params').game_id != game.id %}
-                                <span>
-                                    <a href="{{ path('admin_tournament_game_edit',  {'id': tournament.id, 'game_id': game.id} ) }}">
-                                        Edit
-                                    </a>
-                                </span>
+
+
+                                    {{ game.team1.name|default('???') }}
+                                    vs
+                                    {{ game.team2.name|default('???') }}
+
+                                    {% if game.team2 %}
+                                        <img src="http://www.countryflags.io/{{ game.team2.country.code }}/shiny/64.png" alt="">
+                                    {% endif %}
+                                    <span class="float-right">
+                                        <a class="btn btn-primary" href="{{ path('admin_tournament_game_edit',  {'id': tournament.id, 'game_id': game.id} ) }}">
+                                            Edit
+                                        </a>
+                                    </span>
+                                </div>
+
+
+                                {% if game.score1 and game.score2 %}
+                                    <div class="score-container">   <span class="score">{{ game.score1 }}</span>
+                                        <span class="score">{{ game.score2 }}</span> </div>
                                 {% endif %}
 
                             </li>
@@ -65,14 +73,5 @@
 
     </div>
 
-    {#<ul>#}
-    {#<li>#}
-    {#<a href="{{ path('tournament_index') }}">Back to the list</a>#}
-    {#</li>#}
-    {#<li>#}
-    {#{{ form_start(delete_form) }}#}
-    {#<input type="submit" value="Delete">#}
-    {#{{ form_end(delete_form) }}#}
-    {#</li>#}
-    {#</ul>#}
+
 {% endblock %}

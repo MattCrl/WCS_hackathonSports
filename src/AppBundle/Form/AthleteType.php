@@ -20,7 +20,7 @@ class AthleteType extends AbstractType
             ->add('birthdate', DateType::class,
                 [
                     'widget' => 'single_text', 'model_timezone' => 'Europe/Paris', 'html5' => false,
-                    'attr' => ['class' => 'flatpickr']
+                    'attr' => ['class' => 'flatpickr-date']
                 ]
             )
             ->add('biography')

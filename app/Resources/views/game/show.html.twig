@@ -28,13 +28,15 @@
                     <img class="img-fluid" src="{{ asset('images/') }}{{ game.team1.image }}">
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-center">
-                    <h1>
-                        <span class="score">{{ game.score1|default('Not available yet') }}</span>
-                    </h1>
+            {% if game.score1 %}
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>
+                            <span class="score">{{ game.score1|default('Not available yet') }}</span>
+                        </h1>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
         <div class="col">
             <div class="row">
@@ -61,13 +63,15 @@
                     <img class="img-fluid" src="{{ asset('images/') }}{{ game.team2.image }}">
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-center">
-                    <h1>
-                        <span class="score">{{ game.score2|default('Not available yet') }}</span>
-                    </h1>
+            {% if game.score2 %}
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>
+                            <span class="score">{{ game.score2|default('Not available yet') }}</span>
+                        </h1>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
     <div class="text-center mt-5">

@@ -13,5 +13,13 @@ flatpickr('.flatpickr', {
 
 })
 
+flatpickr('.flatpickr-date', {
+    utc: false,
+    locale: French,
+    altInput: true,
+    enableTime: false,
+    altFormat: 'F j, Y',
+})
+
 $('.selectize').chosen();
 console.log($('.selectize'));

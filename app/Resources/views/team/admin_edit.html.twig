@@ -4,10 +4,12 @@
     <h1>Team edit</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input class="btn btn-warning" type="submit" value="Edit">
     {{ form_end(edit_form) }}
 
     <p>
+        <br>
         <a role="button" class="btn btn-primary" href="{{ path('admin_team_index') }}">Back to Teams</a>
     </p>
 
